@@ -1,0 +1,600 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Canvas with Undo, Redo, and Editing Features</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #canvas-container {
+            border: 1px solid #ccc;
+            width: 800px;
+            height: 800px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .controls {
+            margin: 10px 0;
+        }
+        .controls select, .controls input, .controls button {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .textbox, .media {
+            position: absolute;
+            padding: 5px;
+            min-width: 100px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: move;
+            overflow-wrap: anywhere;
+        }
+        .resizable {
+            resize: both;
+            overflow: auto;
+        }
+        .media img, .media video {
+            max-width: 200px;
+            max-height: 150px;
+        }
+        .selected {
+            outline: 2px dashed #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enhanced Canvas with Undo, Redo, and Editing Features</h1>
+    <div class="controls">
+        <button id="pen">Pen</button>
+        <button id="eraser">Eraser</button>
+        <button id="addText">Add Text</button>
+        <button id="addImage">Add Image</button>
+        <button id="addVideo">Add Video</button>
+        <button id="delete">Delete</button>
+        <button id="duplicate">Duplicate</button>
+        <label for="penSize">Pen/Eraser Size:</label>
+        <input type="number" id="penSize" value="3" min="1" max="20">
+        <label for="colorPicker">Color:</label>
+        <input type="color" id="colorPicker" value="#000000">
+        <button id="clearCanvas">Clear</button>
+        <button id="bold">Bold</button>
+        <button id="download-pdf">Export</button>
+    </div>
+    <div id="canvas-container">
+        <canvas id="drawingCanvas" width="800" height="800"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('canvas-container');
+        const colorPicker = document.getElementById('colorPicker');
+        const penSizeInput = document.getElementById('penSize');
+        const penButton = document.getElementById('pen');
+        const eraserButton = document.getElementById('eraser');
+        const addTextButton = document.getElementById('addText');
+        const addImageButton = document.getElementById('addImage');
+        const addVideoButton = document.getElementById('addVideo');
+        const deleteButton = document.getElementById('delete');
+        const duplicateButton = document.getElementById('duplicate');
+        const clearCanvasButton = document.getElementById('clearCanvas');
+        let drawMode = 'pen';
+        let isDrawing = false;
+        let selectedElement = null;
+        const history = [];
+        const redoStack = [];
+
+        // Save State
+        function saveState() {
+            const canvasState = canvas.toDataURL();
+            const containerState = container.innerHTML;
+            history.push({ canvasState, containerState });
+            redoStack.length = 0; // Clear redo stack
+        }
+
+        // Undo/Redo Functions
+        function undo() {
+            if (history.length === 0) return;
+            const lastState = history.pop();
+            redoStack.push({
+                canvasState: canvas.toDataURL(),
+                containerState: container.innerHTML,
+            });
+            restoreState(lastState);
+        }
+
+        function redo() {
+            if (redoStack.length === 0) return;
+            const nextState = redoStack.pop();
+            history.push({
+                canvasState: canvas.toDataURL(),
+                containerState: container.innerHTML,
+            });
+            restoreState(nextState);
+        }
+
+        function restoreState(state) {
+            const img = new Image();
+            img.src = state.canvasState;
+            img.onload = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+            };
+            container.innerHTML = state.containerState;
+            reapplyListeners();
+        }
+
+        // Add Dragging & Resizing
+        function enableDragAndResize(element) {
+            element.classList.add('resizable');
+            element.addEventListener('mousedown', (e) => {
+                selectedElement = element;
+                let offsetX = e.offsetX;
+                let offsetY = e.offsetY;
+
+                const onMouseMove = (e) => {
+                    element.style.left = `${e.pageX - container.offsetLeft - offsetX}px`;
+                    element.style.top = `${e.pageY - container.offsetTop - offsetY}px`;
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                document.addEventListener('mouseup', () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    saveState();
+                }, { once: true });
+            });
+        }
+
+        function reapplyListeners() {
+            document.querySelectorAll('.textbox, .media').forEach((el) => enableDragAndResize(el));
+        }
+
+        // Add Text
+        addTextButton.addEventListener('click', () => {
+            const textBox = document.createElement('div');
+            textBox.classList.add('textbox');
+            textBox.contentEditable = true;
+            textBox.style.left = '50px';
+            textBox.style.top = '50px';
+            textBox.innerText = 'Editable Text';
+            container.appendChild(textBox);
+            enableDragAndResize(textBox);
+            saveState();
+        });
+
+        // Add Image
+        addImageButton.addEventListener('click', () => {
+            const imageURL = prompt('Enter image URL:');
+            if (!imageURL) return;
+
+            const imgWrapper = document.createElement('div');
+            imgWrapper.classList.add('media');
+            const img = document.createElement('img');
+            img.src = imageURL;
+            imgWrapper.appendChild(img);
+            container.appendChild(imgWrapper);
+            enableDragAndResize(imgWrapper);
+            saveState();
+        });
+
+        // Add Video
+        addVideoButton.addEventListener('click', () => {
+            const videoURL = prompt('Enter video URL:');
+            if (!videoURL) return;
+
+            const videoWrapper = document.createElement('div');
+            videoWrapper.classList.add('media');
+            const video = document.createElement('video');
+            video.src = videoURL;
+            video.controls = true;
+            videoWrapper.appendChild(video);
+            container.appendChild(videoWrapper);
+            enableDragAndResize(videoWrapper);
+            saveState();
+        });
+
+        // Duplicate
+        duplicateButton.addEventListener('click', () => {
+            if (!selectedElement) return;
+            const clone = selectedElement.cloneNode(true);
+            container.appendChild(clone);
+            enableDragAndResize(clone);
+            saveState();
+        });
+
+        // Delete Selected Element
+        deleteButton.addEventListener('click', () => {
+            if (selectedElement) {
+                container.removeChild(selectedElement);
+                saveState();
+            }
+        });
+
+        // Pen/Eraser Modes
+        penButton.addEventListener('click', () => drawMode = 'pen');
+        eraserButton.addEventListener('click', () => drawMode = 'eraser');
+
+        // Drawing on Canvas
+        canvas.addEventListener('mousedown', () => {
+            isDrawing = true;
+            saveState();
+        });
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            ctx.lineWidth = penSizeInput.value;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = drawMode === 'eraser' ? 'white' : colorPicker.value;
+
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        // Keyboard Shortcuts for Undo/Redo
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'z') undo();
+            if (e.ctrlKey && e.key === 'y') redo();
+        });
+
+        // Clear Canvas
+        clearCanvasButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            container.innerHTML = '';
+            saveState();
+        });
+    </script>
+    <script>
+        document.getElementById("download-pdf").addEventListener("click", function () {
+          const content = document.getElementById("canvas-container");
+    
+          // Use html2canvas to render the content as an image
+          html2canvas(content).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jspdf.jsPDF();
+            
+            // Calculate the dimensions for the PDF
+            const imgWidth = 210; // A4 width in mm
+            const pageHeight = 297; // A4 height in mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+    
+            // Add the image to the PDF and handle multiple pages
+            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+    
+            while (heightLeft > 0) {
+              position = heightLeft - imgHeight; // Move to the next page
+              pdf.addPage();
+              pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+              heightLeft -= pageHeight;
+            }
+    
+            // Save the PDF
+            pdf.save("converted.pdf");
+          });
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Text Container</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .text-container {
+            position: relative;
+            resize: vertical;
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 300px;
+            height: auto;
+            transition: width 0.3s ease-in-out;
+            word-wrap: break-word;
+            white-space: normal;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        This is some long text that will move upward and wrap while the width of the container increases as its height is reduced manually.
+    </div>
+
+    <script>
+        const container = document.querySelector(".text-container");
+        container.contentEditable=true;
+
+        container.addEventListener("mousemove", () => {
+            // Dynamically calculate new width based on height
+            const newHeight = container.clientHeight;
+            const newWidth = 300 + (200 - newHeight); // Adjust logic to suit your needs
+
+            // Apply the new width
+            container.style.width = `${newWidth}px`;
+        });
+    </script>
+</body>
+</html> -->
+<style>
+    /* Responsive Container */
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .file-upload-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin: 40px auto;
+        padding: 15px;
+        width: 85%;
+        max-width: 90%;
+        text-align: center;
+        background-color: white;
+        /* box-shadow: 0 0 10px white; */
+        border-radius: 5px;
+        direction: ltr;
+    }
+
+    label {
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .file-type-selector, .file-input {
+        padding: 8px 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .file-type-selector {
+        width: 150px;
+    }
+
+    .file-input {
+        flex: 1;
+        max-width: 250px;
+    }
+
+    /* Responsive Output */
+    .output-container {
+        margin: 20px auto;
+        margin-bottom: 50px;
+        padding: 15px;
+        width: 85%;
+        max-width: 90%;
+        height: 400px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        overflow-y: auto;
+        font-size: 1rem;
+        font-family: Arial, sans-serif;
+        white-space: pre-wrap; /* Ensures text wraps properly */
+        direction: ltr;
+    }
+
+    @media (max-width: 768px) {
+        label {
+            font-size: 0.9rem;
+        }
+
+        .file-type-selector, .file-input {
+            font-size: 0.9rem;
+            padding: 6px 8px;
+        }
+
+        .output-container {
+            font-size: 0.9rem;
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        label, .file-type-selector, .file-input {
+            font-size: 0.8rem;
+        }
+
+        .file-upload-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .output-container {
+            font-size: 0.8rem;
+        }
+    }
+</style>
+<div  id='toolbar'></div>
+<div class="file-upload-container">
+    <label for="fileTypeSelector">Select File Type:</label>
+    <select id="fileTypeSelector" class="file-type-selector">
+        <option value="pdf">PDF</option>
+        <option value="image">Image</option>
+        <option value="doc">Word Document</option>
+    </select>
+    <input type="file" id="fileInput" class="file-input" />
+</div>
+<div class="loading-bar-container" id="loadingBarContainer" style="display: none;">
+    <div class="loading-bar" id="loadingBar"></div>
+</div>
+<div id="output" class="output-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.5.0/docx.min.js"></script>
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const loadingBarContainer = document.getElementById('loadingBarContainer');
+    const loadingBar = document.getElementById('loadingBar');
+    const output = document.getElementById('output');
+
+    fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Show loading bar
+        showLoadingBar();
+
+        try {
+            const fileType = document.getElementById('fileTypeSelector').value;
+
+            if (fileType === 'pdf') {
+                await processPDF(file);
+            } else if (fileType === 'image') {
+                await processImage(file);
+            } else if (fileType === 'doc') {
+                await processDoc(file);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            output.innerText = 'Error processing file.';
+        } finally {
+            // Hide loading bar after processing
+            hideLoadingBar();
+        }
+    });
+
+    function showLoadingBar() {
+        loadingBarContainer.style.display = 'block';
+        loadingBar.style.width = '0%';
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            loadingBar.style.width = `${progress}%`;
+            if (progress >= 100) clearInterval(interval);
+        }, 200);
+    }
+
+    function hideLoadingBar() {
+        loadingBarContainer.style.display = 'none';
+    }
+
+    async function processPDF(file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const typedArray = new Uint8Array(this.result);
+
+            pdfjsLib.getDocument(typedArray).promise
+                .then((pdf) => {
+                    const pagePromises = [];
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        pagePromises.push(pdf.getPage(i));
+                    }
+                    return Promise.all(pagePromises);
+                })
+                .then((pages) => {
+                    const ocrPromises = pages.map((page) => {
+                        const viewport = page.getViewport({ scale: 10 });
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        return page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
+                            return Tesseract.recognize(canvas.toDataURL(), 'eng', {
+                                logger: (info) => console.log(info),
+                            }).then(({ data: { text } }) => text);
+                        });
+                    });
+
+                    return Promise.all(ocrPromises).then((texts) => {
+                        output.innerText = texts.join('\n');
+                    });
+                });
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    async function processImage(file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            Tesseract.recognize(reader.result, 'eng', {
+                logger: (info) => console.log(info),
+            }).then(({ data: { text } }) => {
+                output.innerText = text;
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function processDoc(file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const zip = new JSZip();
+            zip.loadAsync(reader.result).then((doc) => {
+                const textPromises = [];
+                doc.forEach((relativePath, file) => {
+                    if (relativePath.includes('.xml')) {
+                        textPromises.push(file.async('text'));
+                    }
+                });
+                Promise.all(textPromises).then((texts) => {
+                    output.innerText = texts.join('\n');
+                });
+            });
+        };
+        reader.readAsArrayBuffer(file);
+    }
+    document.querySelector('.output-container').contentEditable='true';
+</script>
+
+
+<style>
+    .loading-bar-container {
+        width: 100%;
+        background: #f3f3f3;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 20px auto;
+        height: 10px;
+        max-width: 500px;
+    }
+
+    .loading-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(to right, #4caf50, #8bc34a);
+        transition: width 0.2s;
+    }
+</style>

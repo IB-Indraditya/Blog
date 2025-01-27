@@ -1,0 +1,1029 @@
+<html>
+    <head>
+        <style>
+            .mid{
+                display: flex;
+                flex: 1;
+                height: auto;
+                background: url("https://images.unsplash.com/photo-1617720119967-a11440b43b3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+                background-attachment: fixed;
+                background-position: top;
+                background-repeat: no-repeat;
+                background-size: cover;
+                flex-direction: column;
+                transition: 4s ease-in-out;
+                opacity: 0;
+            }
+            .con7{
+                background: url("https://c0.wallpaperflare.com/preview/71/610/431/advice-article-background-beverage.jpg");
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-position: top;
+                background-size: cover;
+                width: 100% !important;
+                margin-top: 0 !important;
+                padding: 50px 0;
+                direction: rtl;
+            }
+            .con7 .con22{
+                width: 600px;
+                direction: ltr;
+            }
+            .con7 .con21{
+                width: 640px;
+                direction: ltr;
+                overflow-x: hidden;
+            }
+            .con1, .con2{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                margin: 250px auto;
+                margin-bottom: 20px;
+            }
+            .con2{
+                background-color: white;
+                margin: 50px auto;
+                display: flex;
+                justify-content: center;
+                width: 95%;
+            }
+            .htext{
+                color: greenyellow;
+                font-size: 70px;
+                text-align: center;
+                text-transform: uppercase;
+                transform: translateX(150px);
+                transition: 1s;
+            }
+            .btext{
+                margin: 140px auto;
+                text-align: center;
+                color: white;
+                font-size: 30px;
+                margin-bottom: 20px;
+                transform: translateX(-200px);
+                transition: 1s;
+            }
+            .blog{
+                margin: 0px auto;
+                margin-bottom: 200px;
+                text-align: center;
+                font-size: 40px;
+                color: gold;
+                transform: translateX(200px);
+                transition: 1s;
+            }
+            .con21{
+                width: 700px;
+                margin: 0 10px;
+            }
+            .con22{
+                width: 550px;
+                margin: 0 10px;
+                direction: rtl;
+            }
+            .con22 img{
+                width: 70%;
+                height: 90%;
+                margin-top: 40px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px dimgray;
+            }
+            .shtext{
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 40px;
+                transform: scaleX(1.2) translateX(200px);
+                direction: ltr;
+                transition: .5s;
+                overflow-x: hidden;
+            }
+            .shtext2{
+                transform: scaleX(1) translateX(100px);
+                direction: ltr;
+            }
+            .stext{
+                font-family: monospace;
+                font-size: 20px;
+                direction: ltr;
+            }
+            .write{
+                font-size: 25px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                border: solid 1px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                color: black;
+                border-radius: 5px;
+                padding: 10px 15px;
+                width: 200px;
+                text-align: center;
+                cursor: url('gpointer.png'), pointer;
+                transition: .5s;
+                opacity: 0;
+                transform: scale(0);
+            }
+            .write:hover{
+                color: white;
+                background-color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .con3{
+                width: 100%;
+                background: rgb(231, 251, 231);
+                display: block;
+                padding-bottom: 100px;
+                margin-bottom: 0;
+            }
+            .con3 .hitx{
+                margin: 70px;
+            }
+            .con23{
+                display: flex;
+                justify-content: center;
+            }
+            .con23 .conimg{
+                margin: 0 40px;
+                cursor: url('gpointer.png'), pointer;
+
+            }
+            .conimg img{
+                width: 280px;
+                box-shadow: 0 0 5px black;
+                border-radius: 5px;
+            }
+            
+            .imgovl{
+                width: 280px;
+                font-size: 40px;
+                font-weight: bold;
+                background: rgba(255, 255, 255, .5);
+                color: white;
+                text-align: center;
+                text-shadow: 0 0 10px black;
+                margin-top: -70px;
+                padding: 10px 0;
+                border-radius: 5px;
+                position: absolute;
+            }
+            .hitx{
+                margin: 40px auto;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 40px;
+                text-align: center;
+                font-weight: normal;
+                transform: translateY(0px);
+                transition: .5s;
+            }
+            
+            .con4{
+                width: 100%;
+                background: white;
+                display: block;
+                padding-bottom: 70px;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+            .con24{
+                border: solid 1px transparent;
+                padding: 50px;
+                display: flex;
+                justify-content: center;
+            }
+            .con24a{
+                width: 80%;
+            }
+            .con24b{
+                width: 80%;
+                direction: rtl;
+            }
+            .con25b{
+                direction: ltr;
+                overflow-x: hidden;
+            }
+            .con24a img{
+                width: 600px;
+                height: 500px;
+                background-color: black;
+                border-radius: 5px;
+                margin: 10px;
+                box-shadow: 0 0 5px black;
+            }
+            .con24b .imgbox{
+                width: 700px;
+                height: 120px;
+                background-color: white;
+                margin: 10px;
+                box-shadow: 0 0 4px black;
+            }
+            .imgbox{
+                display: flex;
+                direction: ltr;
+                opacity: 1 !important;
+            }
+            .imgbox img{
+                width: 120px;
+                height: 120px;
+            }
+            .imgbox .imtext, .imstext{
+                direction: ltr;
+                font-size: 25px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                padding: 10px 20px;
+                color: seagreen;
+            }
+            .imstext{
+                margin: 10px;
+                padding: 0;
+                font-size: 15px;
+                color: black;
+            }
+            .con5{
+                background: url("https://img.freepik.com/premium-photo/blue-vintage-dial-telephone-handset_180224-121.jpg");
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: top;
+            }
+            .con5 .con24 .con24a{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, .2);
+                padding: 40px 0;
+                border-radius: 5px;
+            }
+            .con24a #textbox{
+                width: 70%;
+                height: 200px;
+                resize: none;
+                margin: 10px auto;
+                font-size: 20px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: white;
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                direction: ltr;
+                cursor: url('gtextc.png'), text;
+            }
+            #textbox:focus{
+                outline: none;
+                box-shadow: 0 0 10px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .con24a input, .con24b input{
+                width: 500px;
+                margin: 0px auto;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 20px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                background-color: white;
+                transition: .4s;
+                cursor: url('gtextc.png'), text;
+            }
+            .con24a input{
+                border-radius: 5px;
+                width: 70%;
+                margin: 10px auto;
+                direction: ltr;
+                text-align: center;
+                text-align: left;
+            }
+            #subb{
+                width: 72%;
+                text-align: center;
+
+            }
+            input:focus{
+                outline: none;
+                box-shadow: 0 0 10px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            #subb:hover {
+                background: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                color: white;
+                cursor: url('gpointer.png'), pointer;
+                box-shadow: 0 0 10px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .con6{
+                padding-bottom: 0;
+            }
+            .con8{
+                position: fixed;
+                padding: 10px;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                margin: 0 auto;
+                bottom: 10px;
+                right: 40px;
+                cursor: url('gpointer.png'), pointer !important;
+                z-index: 1000;
+            }
+            /* .gotop{
+                text-align: center;
+                background: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                border-radius: 50px;
+                color: white;
+                padding: 7px 0;
+                box-shadow: 0 0 5px 5px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                visibility: collapse;
+                transition: 1s;
+                cursor: url('gpointer.png'), pointer !important;
+                transform: scale(1.2);
+            } */
+            img, .conimg{
+                transform: scale(0);
+                transition: 1.5s !important;
+                opacity: 0;
+            }
+            .con3 .con23 .conimg{
+                overflow: hidden;
+                border-radius: 5px;
+                /* box-shadow: 0 0 10px dimgray; */
+            }
+            #catimg{
+                object-fit: cover;
+                transition: 1s !important;
+            }
+            #catimg:hover{
+                transform: scale(1.5) !important;
+            }
+            .error {
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                font-size: 0.9em;
+            }
+            .valid {
+                font-family: Arial, Helvetica, sans-serif;
+                color: springgreen;
+                font-size: 0.9em;
+            }
+            @media (max-width: 1400px){
+                .con23 .conimg{
+                    margin: 0 auto;
+                }
+                .conimg img{
+                    width: 20vw;
+                    box-shadow: 0 0 10px black;
+                }
+                .imgovl{
+                    width: 20vw;
+                    font-size: 30px;
+                    margin-top: -60px;
+                }
+                .con24{
+                    padding: 20px;
+                    display: block;
+                }
+                .con24a{
+                    width: auto;
+                    justify-content: center;
+                }
+                .con24a img{
+                    width: 100%;
+                    height: auto;
+                    box-shadow: none;
+                    margin: 10px auto;
+                }
+                .con24b{
+                    direction: ltr;
+                    margin: 0 auto;
+                    width: auto;
+                }
+                .imgbox{
+                    margin: 10px auto !important;
+                    width: 100% !important;
+                    height: auto !important;
+                }
+                .con5{
+                    text-align: center;
+                }
+                #subb{
+                    padding: 10px 25px;
+                }
+            }
+            @media (max-width: 1200px){
+                .con2{
+                    flex-direction: column;
+                    width: 100% !important;
+                }
+                .con21{
+                    width: auto;
+                }
+                .shtext{
+                    text-align: center;
+                    transform: scaleX(1.2) translateX(0px) !important;
+                }
+                .con22{
+                    display: flex;
+                    justify-content: center;
+                    margin: 50px auto;
+                    direction: ltr;
+                    width: auto !important;
+                }
+                .con7{
+                    background: url("https://i.pinimg.com/736x/b4/03/dd/b403dd07ed859682d122b5862226fd68.jpg");
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: top;
+                }
+                .con2 .con22 img{
+                    padding: 0 25vw;
+                    background-color: beige;
+                    display: flex;
+                    justify-content: center;
+                    width: 40vw;
+                    height: auto;
+                    border-radius: 0px;
+                    box-shadow: none;
+                }
+                .con7 .con21{
+                    width: auto !important;
+                }
+                .con7 .con22 img{
+                    padding: 0 25vw;
+                    background-color: rgba(255, 255, 255, .4);
+                    box-shadow: 0 0 10px dimgray;
+                    display: flex;
+                    justify-content: center;
+                    width: 40vw;
+                    height: auto;
+                    border-radius: 0px;
+                    box-shadow: none;
+                }
+                .con23 .conimg{
+                    margin: 0 auto;
+                    width: 20vw;
+                }
+                .conimg img{
+                    width: 100%;
+                    box-shadow: 0 0 10px black;
+                }
+                .imgovl{
+                    width: 20vw;
+                    font-size: 25px;
+                    margin-top: -53px;
+                }
+                .imgbox{
+                    box-shadow: none !important;
+                }
+            }
+            @media (max-width: 700px){
+                .htext{
+                    transform: translateX(15px);
+                    transition: .5s;
+                }
+                .btext{
+                    transform: translateX(-20px);
+                    transition: 1s;
+                }
+                .blog{
+                    transform: translateX(20px);
+                    transition: 1.5s;
+                }
+                .con2{
+                    flex-direction: column;
+                    width: 90%;
+                }
+                .con3{
+                    width: 100%;
+                }
+                .con4{
+                    width: 100% !important;
+                }
+                .con21{
+                    width: auto;
+                }
+                .shtext{
+                    transform: scaleX(1) !important;
+                    font-size: 35px;
+                }
+                .stext{
+                    font-size: 15px;
+                }
+                .con22{
+                    display: flex;
+                    justify-content: center;
+                    margin: 50px auto;
+                    direction: ltr;
+                    width: auto;
+                }
+                .con22 img{
+                    padding: 0 20vw;
+                    background-color: beige;
+                    display: flex;
+                    justify-content: center;
+                    width: 40vw;
+                    height: auto;
+                }
+                .con23{
+                    flex-direction: column;
+                }
+                .con23 .conimg{
+                    margin: 20px auto;
+                    width: auto;
+                }
+                .con24a img, .con24b .imgbox{
+                    margin: 10px auto !important;
+                }
+                .conimg img{
+                    width: 50vw;
+                }
+                .imgovl{
+                    width: 40vw;
+                    font-size: 5vw;
+                    /* background-color: transparent; */
+                    margin: -10.5vw auto;
+                    text-align: center;
+                    padding: 2vw 5vw;
+                }
+                .imgbox{
+                    display: block;
+                }
+                .imgbox img{
+                    width: 100%;
+                    height: auto;
+                }
+                .imtext{
+                    text-align: center;
+                    font-size: 18px !important;
+                }
+                textarea, input{
+                    width: 95% !important;
+                    font-size: 15px !important;
+                }
+                #subb{
+                    width:98% !important;
+                }
+                textarea{
+                    height: 120px !important;
+                }
+            }
+            @media (min-width: 1900px) {
+                .con8{
+                    right: auto;
+                    position: fixed;
+                    text-align: center;
+                    background: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                    border-radius: 50px;
+                    color: white;
+                    padding: 7px 0;
+                    box-shadow: 0 0 5px 5px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                    visibility: collapse;
+                    transition: 1s;
+                    margin: 0 770px;
+                }
+                img, .write{
+                    transform: scale(1) !important;
+                    opacity: 1 !important;
+                }
+                
+            }
+        </style>
+    </head>
+    <body>
+        <section class="mid">
+            <section class="con1">
+                <h1 class="htext">Write Blog</h1>
+                <p class="btext">Publish Article</p>
+                <p class="blog">Share your stories</p>
+            </section>
+        </section>
+        <section class="con2 con7" id="aboutblog">
+            <section class="con21">
+                <p class="shtext" id="abt">About Blog</p>
+                <br><br>
+                <p class="stext">
+                    Welcome to Blog, your gateway to creativity, connection, and communication! We believe that everyone has a story to tell, knowledge to share, and ideas worth spreading. Blog is a user-friendly platform where individuals, professionals, and organizations come together to express themselves and connect with a global audience.
+                </p>
+                <p class="stext">
+                    At Blog, our mission is to empower voices. Whether you're a writer sharing your thoughts, an entrepreneur promoting your business, or a hobbyist showcasing your passion.
+                </p>
+                <p class="stext">
+                    Become a part of a vibrant community that values expression, learning, and growth. Start your journey with Blog and let the world hear your voice.At Blog, your story matters. Let’s create something amazing together!
+                </p>
+                <br>
+                <br>
+                <a href="blog.php"><p class="write" id="read">Read Blogs</p></a>
+            </section>
+            <section class="con22">
+                <img src="aboutblog.jpg" alt="" id="aboutimg">
+            </section>
+        </section>
+        <section class="con2" id="bhealth">
+            <section class="con21">
+                <p class="shtext" id="hlt">Blog is good for one's Health</p>
+                <br><br>
+                <p class="stext">
+                    Blogging can be incredibly beneficial for one's health, both mentally and emotionally.
+                </p>
+                <p class="stext">
+                    Expressing thoughts and feelings through writing helps reduce stress and provides a therapeutic outlet for emotions.
+                </p>
+                <p class="stext">
+                    It encourages self-reflection, enhances creativity, and boosts cognitive functions. Sharing personal experiences or knowledge fosters a sense of connection with readers, combating feelings of isolation and loneliness. 
+                </p>
+                <p class="stext">
+                    Additionally, engaging with a supportive online community through blogging can build confidence and promote a positive mindset, making it a rewarding activity for overall well-being.
+                </p>
+                <br>
+                <br>
+                <a href="writepad.php"><p class="write" id="create">Create Blog</p></a>
+            </section>
+            <section class="con22">
+                <img src="bloghealth.jpg" alt="" id="healthimg">
+            </section>
+        </section>
+        <section class="con2 con3" id="categoriessec">
+            <h1 class="hitx" id="cat">Categories</h1>
+            <section class="con23">
+                <section class="conimg">
+                    <img src="styleblog.jpg" alt="" id="catimg" class="cat1">
+                    <p class="imgovl">Style Blog</p>
+                </section>
+                <section class="conimg">
+                    <img src="foodblog.jpg" alt="" id="catimg" class="cat2">
+                    <p class="imgovl">Food Blog</p>
+                </section>
+                <section class="conimg">
+                    <img src="travelblog.jpg" alt="" id="catimg" class="cat3">
+                    <p class="imgovl">Travel Blog</p>
+                </section>
+                <section class="conimg">
+                    <img src="designblog.jpg" alt="" id="catimg" class="cat4">
+                    <p class="imgovl">Design Blog</p>
+                </section>
+            </section>
+        </section>
+        <section class="con2 con4" id="blogbenefits">
+            <h1 class="hitx" id="bbn">Blog Benefits</h1>
+            <section class="con24">
+                <section class="con24a">
+                    <img class="benefitimg" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/03/what-is-a-blog-1.png" alt="" id="blogimg">
+                </section>
+                <section class="con24b">
+                    <section class="imgbox" id="imgbox1">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScVpoazR0BgHo5drE7GaXVtsC2np7voR_tSQ&s" alt="" id="blogimg">
+                        <section class="imtext">Personal Branding and Professional Growth
+                            <p class="imstext">A blog helps establish your expertise in a specific field, showcasing your knowledge and skills to a wider audience. It builds your online presence and boosts your credibility.</p>
+                        </section>
+                    </section>
+                    <section class="imgbox" id="imgbox2">
+                        <img src="https://eduenligne.com/wp-content/uploads/2023/12/71051151_s-280x280-2.jpg" alt="" id="blogimg">
+                        <section class="imtext">Improved Writing and Communication Skills
+                            <p class="imstext">Regular blogging enhances your writing skills and ability to articulate ideas effectively, which can benefit both personal and professional communication.</p>
+                        </section>
+                    </section>
+                    <section class="imgbox" id="imgbox3">
+                        <img src="https://media.licdn.com/dms/image/v2/D5612AQEJPLJyINK5_g/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1698435132365?e=2147483647&v=beta&t=ubWxn-tDO-IcjkUHTlb6fhrsMsIILj3blfuvczCyJ-s" alt="" id="blogimg">
+                        <section class="imtext">Connection with a Like-Minded Audience
+                            <p class="imstext">Blogs allow you to interact with readers who share similar interests, creating a community and opening opportunities for collaboration or feedback.</p>
+                        </section>
+                    </section>
+                    <section class="imgbox" id="imgbox4">
+                        <img src="https://onesignal.com/blog/content/images/2022/08/how-does-app-monetization-work.jpg" alt="" id="blogimg">
+                        <section class="imtext">Monetization Opportunities
+                            <p class="imstext">By generating traffic to your blog, you can explore monetization options like affiliate marketing, sponsored posts, or selling products and services, creating a potential source of income.</p>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section class="con2 con4 con5" id="contactsec">
+            <h1 class="hitx" id="con">Contact</h1>
+            <section class="con24">
+                <form action="contact.php" id="registerForm" method="GET" class="con24a">
+                    <input type="text" placeholder="eg; Jane Doe" name="name" required>
+                    <input type="text" placeholder="eg; 678****90" name="contact" required>
+                    <input type="email" id="email" placeholder="eg; janedoe@example.com" name="mail" required>
+                    <p id="emailFeedback" class="error"></p>
+                    <textarea name="message" id="textbox" placeholder="eg; Tell us if we can do better..." required></textarea>
+                    <input type="submit" value="SUBMIT" id="subb">
+                </form>
+                <!-- <section class="con24b">
+                    
+                    <br>
+                </section> -->
+            </section>
+        </section>
+        <section class="con2 con4 con6" id="bpricing">
+            <h1 class="hitx" id="pri">Pricing</h1>
+            <section class="con24">
+                <section class="con24a">
+                    <img src="blogfree.jpg" alt="" id="priceimg">
+                </section>
+                <section class="con24b con25b" id="pricing">
+                    <p class="shtext shtext2" id="free">Free and Accessible for Everyone</p>
+                    <br>
+                    <br>
+                    <p class="stext">Blogging has become one of the most accessible and cost-effective ways to share ideas, experiences, and expertise. Best of all, starting a blog can be completely free! With platforms like WordPress, Blogger, and Medium, anyone can create, customize, and publish articles without spending a penny.</p>
+                    <br>
+                    <p class="stext">These platforms offer free templates, user-friendly interfaces, and essential tools for beginners and professionals alike. Whether you're sharing your passion, building an online presence, or starting a hobby, blogging ensures you can express yourself freely without worrying about upfront costs.</p>
+                    <br>
+                    <p class="stext">With zero publishing fees and no restrictions on creativity, blogging is the ultimate tool for sharing your voice with the world. So why wait? Dive into the world of free blogging and let your ideas flourish!</p>
+                    <br>
+                    <a href="dashboard.php"><p class="write" id="post">Post Blog</p></a>
+                </section>
+            </section>
+        </section>
+        <script>
+            window.onload=()=>{
+                document.querySelector('.mid').style.opacity='1';
+                document.querySelector('.htext').style.transform='translateX(0px)';
+                document.querySelector('.btext').style.transform='translateX(0px)';
+                document.querySelector('.blog').style.transform='translateX(0px)';
+                const hash = window.location.hash; // Get the hash part of the URL
+                if (hash) {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        // Scroll to the element
+                        target.scrollIntoView({ behavior: "smooth" });
+                        document.querySelectorAll('img').forEach((e) => {
+                            e.style.transform = 'scale(1)';
+                            e.style.opacity = '1';
+                        });
+
+                        setTimeout(() => {
+                            window.scrollBy({ top: -110, behavior: "auto" });
+                        }, 200); // Delay to ensure smooth scrolling completes
+                    }
+                }
+            };
+            const bgStyles1 = [
+                "url('https://images8.alphacoders.com/549/549442.jpg')",
+                "url('https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Desktop-Backgrounds-Aesthetic-HD-Free-download.jpg')",
+                "url('https://wallpapers.com/images/hd/dark-desktop-sbkghafvfsbm3gkl.jpg')",
+                "url('https://wallpaper.dog/large/17031660.jpg')",
+                "url('https://images3.alphacoders.com/205/205097.jpg')",
+                "url('https://www.humansecurity.com/hubfs/HMN_Blog%20images_2023_Managing%20the%20Risks%20of%20Third-party%20Code%20in%20the%20Digital%20Supply%20Chain.jpg')",
+                "url('https://images.unsplash.com/photo-1617720119967-a11440b43b3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+            ];
+            const bgStyles2 = [
+                "url('https://info.thecrossingchurch.com/hubfs/Imported_Blog_Media/How-to-Experience-Gods-Presence-this-Easter_Blog.jpg')",
+                "url('https://cdn.rippling.com/static/marketing/site-content/files/ParkerStartupGrind_BlogBanner.svg')",
+                "url('https://c0.wallpaperflare.com/preview/71/610/431/advice-article-background-beverage.jpg')"
+            ];
+            const bgStyles3 = [
+                "url('https://png.pngtree.com/background/20220722/original/pngtree-hold-the-phone-and-click-on-the-screen-picture-image_1716312.jpg')",
+                "url('https://static.vecteezy.com/system/resources/previews/014/549/640/non_2x/contact-us-via-email-phone-or-office-location-communicate-with-customer-or-client-business-information-or-channel-for-business-contact-concept-businessman-with-telephone-email-and-location-pin-vector.jpg')",
+                "url('https://img.freepik.com/premium-photo/blue-vintage-dial-telephone-handset_180224-121.jpg')"
+            ];
+            const bgStyles4 = [
+                "lightcyan",
+                "lightyellow",
+                "lightgreen",
+            ];
+            const bgStyles5 = [
+                "bloghealth1.jpeg",
+                "bloghealth2.jpeg",
+                "bloghealth3.jpeg",
+                "bloghealth.jpg"
+            ];
+            const bgStyles6 = [
+                "aboutimg1.jpeg",
+                "aboutimg2.jpeg",
+                "aboutblog.jpg"
+            ];
+            const bgStyles7 = [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScVpoazR0BgHo5drE7GaXVtsC2np7voR_tSQ&s",
+                "https://eduenligne.com/wp-content/uploads/2023/12/71051151_s-280x280-2.jpg",
+                "https://media.licdn.com/dms/image/v2/D5612AQEJPLJyINK5_g/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1698435132365?e=2147483647&v=beta&t=ubWxn-tDO-IcjkUHTlb6fhrsMsIILj3blfuvczCyJ-s",
+                "https://onesignal.com/blog/content/images/2022/08/how-does-app-monetization-work.jpg",
+                "https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/03/what-is-a-blog-1.png"
+            ];
+            const bgStyles8 = [
+                "freeblog1.jpeg",
+                "freeblog2.jpeg",
+                "blogfree.jpg"
+            ];
+            const bgStyles9 = [
+                "contact1.jpeg",
+                "contact2.jpeg",
+                "contact3.jpeg",
+                "styleblog.jpg"
+            ];
+            const bgStyles10 = [
+                "foodblog1.jpeg",
+                "foodblog2.jpeg",
+                "foodblog3.jpeg",
+                "foodblog.jpg"
+            ];
+            const bgStyles11 = [
+                "travelblog1.jpeg",
+                "travelblog2.jpeg",
+                "travelblog3.jpg",
+                "travelblog.jpg"
+            ];
+            const bgStyles12 = [
+                "designblog1.jpeg",
+                "designblog2.jpeg",
+                "designblog3.jpeg",
+                "designblog.jpg"
+            ];
+
+            // Counter to keep track of the current background style
+            // Define individual counters for each background style array
+            let counter1 = 0;
+            let counter2 = 0;
+            let counter3 = 0;
+            let counter4 = 0;
+            let counter5 = 0;
+            let counter6 = 0;
+            let counter7 = 0;
+            let counter8 = 0;
+            let counter9 = 0;
+            let counter10 = 0;
+            let counter11 = 0;
+            let counter12 = 0;
+
+
+            // Function to apply background style with a fade effect
+            function applyBgStyle(selector, styles, counter, interval=500) {
+                document.querySelectorAll(selector).forEach((ele) => {
+                    ele.style.transition = '4s ease-in-out'; // Smooth transition
+                    ele.style.opacity = '0'; // Start with full transparency
+
+                    // Delay to let the fade effect begin before changing the background
+                    setTimeout(() => {
+                        ele.src = styles[counter];
+                        ele.style.backgroundColor = styles[counter]; // Apply the background image
+                        ele.style.backgroundImage = styles[counter]; // Apply the background image
+                        ele.style.opacity = '1'; // Fade back to full visibility
+                    }, interval); // Delay for the transition effect
+                });
+
+                // Return the updated counter to maintain independent cycles
+                return (counter + 1) % styles.length;
+            }
+
+            function translateBgStyle(selector, styles, counter, interval=1000, y1, y2) {
+                document.querySelectorAll(selector).forEach((ele) => {
+                    ele.style.transition = '2s ease-in-out'; // Smooth transition
+                    ele.style.transform= 'translateY('+y1+'px'+')'; // Start with full transparency
+                    document.querySelectorAll('.imgovl').forEach((e) => {
+                        e.style.opacity='0';
+                        e.style.transition='.5s';
+                    });
+                    // Delay to let the fade effect begin before changing the background
+                    setTimeout(() => {
+                        ele.style.transition = '2s ease-in-out';
+                        ele.src = styles[counter];
+                        // ele.style.backgroundColor = styles[counter]; // Apply the background image
+                        // ele.style.backgroundImage = styles[counter]; // Apply the background image
+                        ele.style.transform= 'translateY('+y2+'px'+')';  // Fade back to full visibility
+                        document.querySelectorAll('.imgovl').forEach((e) => {
+                            e.style.opacity='1';
+                            e.style.transition='10s';
+                        });
+                    }, interval); // Delay for the transition effect
+                });
+
+                // Return the updated counter to maintain independent cycles
+                return (counter + 1) % styles.length;
+            }
+
+            // Change background style every 5 seconds
+            setInterval(() => {
+                counter1 = applyBgStyle('.mid', bgStyles1, counter1);
+                counter2 = applyBgStyle('.con7', bgStyles2, counter2);
+                counter3 = applyBgStyle('.con5', bgStyles3, counter3);
+                counter4 = applyBgStyle('.con3', bgStyles4, counter4);
+                counter5 = applyBgStyle('#healthimg', bgStyles5, counter5);
+                counter6 = applyBgStyle('#aboutimg', bgStyles6, counter6);
+                counter7 = applyBgStyle('.benefitimg', bgStyles7, counter7);
+                counter8 = applyBgStyle('#priceimg', bgStyles8, counter8);
+                counter9 = translateBgStyle('.cat1', bgStyles9, counter9, 500, 1000, 0);
+                counter10 = translateBgStyle('.cat2', bgStyles10, counter10, 1000, -1000, 0);
+                counter11 = translateBgStyle('.cat3', bgStyles11, counter11, 1500, 1000, 0);
+                counter12 = translateBgStyle('.cat4', bgStyles12, counter12, 2000, -1000, 0);
+
+            }, 5000);
+
+
+            const ids = ['imgbox1', 'imgbox2', 'imgbox3', 'imgbox4', 'blogbenefits']; // Array of element IDs
+            let activeIndex = 0; // Index of the currently active element
+
+            function cycleBackgrounds() {
+                // Reset all backgrounds to white
+                ids.forEach((id) => {
+                    document.getElementById(id).style.backgroundColor = 'white';
+                    document.getElementById(id).style.transition = '2s';
+                });
+
+                // Set the active background to green
+                document.getElementById(ids[activeIndex]).style.backgroundColor = 'rgba(200, 255, 230, .5)';
+
+                // Move to the next index, wrapping around to the start
+                activeIndex = (activeIndex + 1) % ids.length;
+            }
+
+            // Start the cycling process
+            setInterval(cycleBackgrounds, 5000);
+        </script>
+        <script>
+            document.getElementById('email').addEventListener('input', function () {
+                const email = this.value;
+                const feedback = document.getElementById('emailFeedback');
+
+                // Regular expression for validating email format
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                // Validate basic email format
+                if (!emailRegex.test(email)) {
+                    feedback.textContent = "Invalid email format!";
+                    feedback.className = 'error';
+                    return;
+                }
+
+                // Extract the subdomain (local part before @)
+                const subdomain = email.split('@')[0];
+                const subdomainRegex = /^(?!.*\.\.)(?!.*__)[a-zA-Z0-9]+(?:[._]?[a-zA-Z0-9]+)*$/;
+
+                // Validate subdomain rules
+                if (!subdomainRegex.test(subdomain)) {
+                    feedback.textContent = "Subdomain must be alphanumeric, may include '_' or '.', but not consecutively!";
+                    feedback.className = 'error';
+                    return;
+                }
+
+                // Extract domain part (after @)
+                const domain = email.split('@')[1];
+                const allowedDomains = [
+                    "gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "icloud.com", "aol.com", 
+                    "protonmail.com", "zoho.com", "mail.com", "gmx.com", "yandex.com", "fastmail.com", 
+                    "msn.com", "live.com", "rediffmail.com", "qq.com", "126.com", "163.com", "tutanota.com", 
+                    "hushmail.com", "inbox.com", "lycos.com", "me.com", "optonline.net", "comcast.net", 
+                    "verizon.net", "att.net", "charter.net", "shaw.ca", "btinternet.com", "sky.com", 
+                    "virginmedia.com", "cox.net", "sympatico.ca", "sbcglobal.net", "bellsouth.net", 
+                    "earthlink.net", "rogers.com", "frontier.com", "netscape.net", "aim.com", "wanadoo.fr", 
+                    "orange.fr", "sfr.fr", "free.fr", "laposte.net", "alice.it", "libero.it", "virgilio.it", 
+                    "tiscali.it", "tin.it", "email.it", "poste.it", "teletu.it", "web.de", "t-online.de", 
+                    "freenet.de", "gmx.de", "arcor.de", "bluewin.ch", "swissmail.ch", "seznam.cz", 
+                    "centrum.cz", "volny.cz", "mail.ru", "bk.ru", "list.ru", "inbox.ru", "rambler.ru", 
+                    "ya.ru", "tut.by", "ukr.net", "i.ua", "bigmir.net", "meta.ua", "onet.pl", "o2.pl", 
+                    "wp.pl", "interia.pl", "neostrada.pl", "home.pl", "gazeta.pl", "tlen.pl", "op.pl", 
+                    "abv.bg", "mail.bg", "dir.bg", "eurodir.bg", "hotmail.co.uk", "yahoo.co.uk", 
+                    "live.co.uk", "btconnect.com", "talk21.com", "virgin.net", "ukgateway.net", 
+                    "eircom.net", "eir.ie", "hotmail.ca", "yahoo.ca", "sympatico.ca", "rogers.ca", 
+                    "bell.net", "videotron.ca", "telus.net", "primus.ca", "shaw.ca", "hotmail.com.au", 
+                    "yahoo.com.au", "bigpond.com", "optusnet.com.au", "iinet.net.au", "dodo.com.au", 
+                    "internode.on.net", "tpg.com.au", "live.com.au", "aapt.net.au", "westnet.com.au", 
+                    "hotmail.co.nz", "yahoo.co.nz", "xtra.co.nz", "ihug.co.nz", "clear.net.nz", 
+                    "paradise.net.nz", "vodafone.net.nz", "orcon.net.nz", "slingshot.co.nz", 
+                    "hotmail.co.in", "yahoo.co.in", "rediffmail.com", "sify.com", "indiatimes.com", 
+                    "airtelmail.in", "vsnl.net", "broadbandindia.com", "reliancemail.com", 
+                    "tatateleservices.com", "china.com", "sina.com", "sina.cn", "qq.com", "vip.qq.com", 
+                    "foxmail.com", "126.com", "163.com", "yeah.net", "sohu.com", "21cn.com", 
+                    "tom.com", "aliyun.com", "aliyun.cn", "sogou.com", "yahoo.com.cn", 
+                    "yahoo.com.hk", "yahoo.co.jp", "hotmail.jp", "outlook.jp", "docomo.ne.jp", 
+                    "ezweb.ne.jp", "auone.jp", "biglobe.ne.jp", "nifty.com", "ocn.ne.jp", 
+                    "ybb.ne.jp", "plala.or.jp", "hotmail.co.kr", "yahoo.co.kr", "naver.com", 
+                    "daum.net", "hanmail.net", "korea.com", "dreamwiz.com", "empas.com", 
+                    "lycos.co.kr", "live.co.kr", "hotmail.com.mx", "yahoo.com.mx", "prodigy.net.mx", 
+                    "live.com.mx", "hotmail.com.ar", "yahoo.com.ar", "fibertel.com.ar", 
+                    "ciudad.com.ar", "arnet.com.ar", "hotmail.com.br", "yahoo.com.br", 
+                    "bol.com.br", "terra.com.br", "uol.com.br", "ig.com.br", "itelefonica.com.br", 
+                    "r7.com", "globo.com", "globomail.com", "oi.com.br", "hotmail.co.za", 
+                    "yahoo.co.za", "vodamail.co.za", "mweb.co.za", "telkomsa.net", 
+                    "hotmail.com.tr", "yahoo.com.tr", "superonline.com", "ttmail.com", 
+                    "turk.net", "posta.net", "hotmail.ru", "yandex.ru", "mail.ru", "bk.ru", 
+                    "inbox.ru", "list.ru", "rambler.ru", "land.ru", "pochta.ru", "hotmail.gr", 
+                    "yahoo.gr", "otenet.gr", "forthnet.gr", "cytanet.com.cy", "spidernet.com.cy", 
+                    "cablenet.com.cy", "primetel.com.cy", "hotmail.ie", "yahoo.ie", "eircom.net", 
+                    "oceanfree.net", "indigo.ie", "iol.ie", "hotmail.sg", "yahoo.com.sg", 
+                    "pacific.net.sg", "singnet.com.sg", "starhub.net.sg", "m1.com.sg", 
+                    "hotmail.my", "yahoo.com.my", "tm.net.my", "jaring.my", "time.net.my", 
+                    "hotmail.ph", "yahoo.com.ph", "live.com.ph", "pldt.com", "gmail.ph", 
+                    "skydsl.net.ph", "dostmail.com", "hotmail.vn", "yahoo.com.vn", "vnn.vn", 
+                    "hcm.fpt.vn", "hcm.vnn.vn", "hanoi.fpt.vn", "saigonnet.vn", "hn.vnn.vn", 
+                    "hotmail.id", "yahoo.co.id", "indosat.net.id", "cbn.net.id", 
+                    "plasa.com", "telkom.net.id", "biz.net.id", "rad.net.id", 
+                    "usatoday.com", "consultant.com", "engineer.com", "accountant.com", 
+                    "scientist.com", "teacher.com", "musician.org", "usa.net", 
+                    "europe.com", "asia.com", "iname.com", "iname.net", "keemail.me"
+                ];
+
+                // Validate against allowed domains
+                if (!allowedDomains.includes(domain)) {
+                    feedback.textContent = `Domain '${domain}' is not allowed!`;
+                    feedback.className = 'error';
+                    return;
+                }
+
+                // If all checks pass
+                feedback.textContent = "Valid email!";
+                feedback.className = 'valid';
+            });
+
+            // Prevent submission if email is invalid
+            document.getElementById('registerForm').addEventListener('submit', function (event) {
+                const feedback = document.getElementById('emailFeedback');
+                if (feedback.textContent !== "Valid email!") {
+                    alert("Please enter a valid email before submitting!");
+                    event.preventDefault();
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,659 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="scrollbar2.css">
+            <style>
+            header{
+                display: flex;
+                justify-content: center;
+            }
+            .headcon{
+                position: fixed;
+            }
+            .headcon, .hdcon1, .hdcon2, .hdcon3, .hdcon4, .hdcon5{
+                display: flex;
+                justify-content: center;
+                font-family: Arial, Helvetica, sans-serif;
+
+            }
+            .scrolled{
+                background: rgba(255, 255, 255, 1);
+                padding: 0px 20px;
+                padding-top: 10px;
+                padding-bottom: 0px;
+                transition: padding-top 1s;
+                z-index: 100;
+            }
+            hr{
+                display: none;
+                color: gray;
+            }
+            .hdcon4{
+                display: none;
+            }
+            .hdcon1, .hdcon2, .hdcon3, .hdcon4{
+                margin: 20px 80px;
+            }
+            .hdcon2{
+                z-index: 100;
+            }
+            .hdcon5{
+                margin: 20px 0px;
+            }
+            .hct{
+                width: 120px;
+                padding: 5px 0;
+                font-size: 20px;
+                margin: 0 20px;
+                cursor: url('gpointer.png'), pointer;
+                color: white;
+                
+            }
+            .hcd{
+                font-weight: bold;
+                -webkit-text-stroke: .5px black;
+                text-shadow: 0 0 3px black;
+            }
+            .hcd:hover{
+                color: silver !important;
+            }
+            .hcts{
+                margin-right: -100px;
+            }
+            .hcts:hover{
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1)) !important;
+                cursor: url('gpointer.png'), pointer !important;
+            }
+            .hctl{
+                font-size: 25px;
+                margin: 0;
+                font-weight: bold;
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .hctb1, .hctb2{
+                width: 120px;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: solid 1px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                background-color: white;
+                color: black;
+            }
+            .hctb2{
+                color: white;
+                background-color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                cursor: url('gpointer.png'), pointer !important;
+            }
+            i{
+                cursor: url('gpointer.png'), pointer !important;
+                transition: 1s;
+            }
+            .dropdown{
+                position: absolute;
+                background-color: white;
+                opacity: 1;
+                /* border: solid 1px silver; */
+                overflow: hidden;
+                z-index: 100;
+                max-height: 0;
+                border-radius: 0px;
+                transition: max-height .7s ease;
+            }
+            .dropdown a p{
+                font-size: 17px;
+                padding: 10px 20px;
+                background-color: transparent;
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                width: 200px;
+                margin: 0px auto;
+                font-weight: normal;
+                -webkit-text-stroke: .5px;
+                text-shadow: none;
+                cursor: url('gpointer.png'), pointer;
+            }
+            .drop:hover{
+                background-color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                color: white;
+            }
+            .hcd:hover .dropdown{
+                opacity: 1;
+                max-height: 400px;
+            }
+            .hct:hover, .htcs:hover{
+                color: gold;
+            }
+            .hctb1:hover{
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .con8{
+                position: fixed;
+                padding: 10px;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                margin: 0 auto;
+                bottom: 10px;
+                right: 40px;
+                cursor: url('gpointer.png'), pointer !important;
+                z-index: 1000;
+            }
+            .gotop{
+                text-align: center;
+                background: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                border-radius: 50px;
+                color: white;
+                padding: 7px 0;
+                box-shadow: 0 0 5px 1px rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                visibility: collapse;
+                transition: 1s;
+                cursor: url('gpointer.png'), pointer !important;
+                transform: scale(1.2);
+            }
+            .
+            @media (max-width: 1550px){
+                .hdcon1, .hdcon2, .hdcon3, .hdcon5{
+                    margin: 20px 3.5vw;
+                }
+                .scrolled{
+                    background: rgba(255, 255, 255, 1);
+                    padding: 0px 30px;
+                    padding-top: 10px;
+                    padding-bottom: 0px;
+                    transition: padding-top 1s;
+                    z-index: 100;
+                }
+            }
+            @media (max-width: 1400px){
+                .hdcon1, .hdcon2, .hdcon3, .hdcon5{
+                    margin: 20px 1.4vw;
+                }
+                .scrolled{
+                    background: rgba(255, 255, 255, 1);
+                    padding: 0px 75px;
+                    padding-top: 10px;
+                    padding-bottom: 0px;
+                    transition: padding-top 1s;
+                    z-index: 100;
+                }
+            }
+            @media (max-width: 1250px){
+                .hdcon1, .hdcon2, .hdcon3, .hdcon4, .hdcon5{
+                    margin: 20px .7vw;
+                }
+                .scrolled{
+                    background: rgba(255, 255, 255, 1);
+                    padding: 0px 20px;
+                    padding-top: 10px;
+                    padding-bottom: 0px;
+                    transition: padding-top 1s;
+                    z-index: 100;
+                }
+                
+            }
+            /* @media (max-width: 1170px){
+                .hdcon1, .hdcon2, .hdcon3, .hdcon5{
+                    margin: 20px .1vw;
+                }
+                .hct{
+                    margin: 0 7px;
+                }
+            } */
+            @media (max-width: 1200px){
+                header{
+                    display: initial;
+                }
+                .hdpad{
+                    background: white;
+                    padding-bottom: 100vh;
+                    padding-right: 100%;
+                    position: fixed;
+                    z-index: 100;
+                }
+                .hcdb{
+                    color: black;
+                }
+                .hdcon1{
+                    position: fixed;
+                    left: 10px;
+                }
+                .hdcon2, .hdcon3{
+                    position: fixed;
+                    left: 10px;
+                    display: none;
+                }
+                .scrolled{
+                    z-index: 100;
+                    background-color: rgba(255, 255, 255, 1);
+                    padding-right: 100%;
+                    padding-bottom: 90px;
+                    transition: 0s;
+                }
+                .dropdown{
+                    position: relative;
+                    border: none;
+                    width: 100vw;
+                    background-color: transparent;
+                }
+                .drop:hover{
+                    color: black;
+                    background-color: transparent;
+                }
+                .dropdown a p{
+                    position: relative;
+                    width: 100vw;
+                }
+                br{
+                    display: block;
+                }
+                .br{
+                    display: block;
+                }
+                .hdcon2{
+                    top: 40px;
+                }
+                .hdcon3{
+                    top: 300px;
+                }
+                .hddown1{
+                    margin-top: 210px;
+                }
+                .hdshow{
+                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                    width: 97%;
+                }
+                .hdcon4, .hdcon5{
+                    position: fixed;
+                    right: -80px;
+                    display: initial;
+                }
+                .hdcon5{
+                    right: -40px;
+                }
+                .hct{
+                    margin: 0 10px;
+                }
+                .hcts{
+                    margin-right: 50px;
+                }
+                .hctb1, .hctb2{
+                    padding: 10px;
+                    margin: 10px;
+                    width: 95vw;
+                }
+            }
+            @media (max-width:830px) {
+                .hctb1, .hctb2{
+                    width: 90vw;
+                }
+                .dropdown a p{
+                    width: 85vw;
+                }
+            }
+            @media (max-width: 500px){
+                header{
+                    display: initial;
+                }
+                .hdcon1{
+                    position: fixed;
+                    left: 10px;
+                }
+                .hdcon2, .hdcon3{
+                    margin: 20px 2vw;
+                    display: none;
+                }
+                .hdcon4, .hdcon5{
+                    position: fixed;
+                    right: -85px;
+                    display: initial;
+                }
+                .hdshow{
+                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                    width: 96%;
+                }
+                .hdcon5{
+                    right: -40px;
+                }
+                .hct{
+                    margin: 0 10px;
+                }
+                .dropdown a p{
+                    width: 80vw;
+                }
+                .hcts{
+                    margin-right: 40px;
+                    color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                }
+                .fa-xl{
+                    font-size: 1em !important;
+                }
+                .hctb1, .hctb2{
+                    margin: 10px;
+                    width: 85vw;
+                    margin-right: auto;
+                }
+            }
+        </style>
+    </head>
+    <header>
+        <section class="headcon">
+            <section class="hdcon1">
+                <a href="index.php"><p class="hct hctl">BLOG</p></a>
+            </section>
+            <section class="hdcon2">
+                <br class="br">
+                <hr>
+                <br class="br">
+                <section class="hct hcd">Features&nbsp<i class="fa-solid fa-angle-down fa-2xs"></i>
+                    <br><br>
+                    <section class="dropdown">
+                        <a href="index.php#bhealth"><p class="drop">Satisfying</p></a>
+                        <a href="index.php#categoriessec"><p class="drop" id="categories">Categories</p></a>
+                        <a href="index.php#blogbenefits"><p class="drop" id="benefits">Benefits</p></a>
+                        <a href="blog.php"><p class="drop">Read The Blogs</p></a>
+                        <a href="craftblog.php"><p class="drop">Watch The Crafts</p></a>
+                        <a href="imageblog.php"><p class="drop">Scroll The Pictures</p></a>
+                        <a href="database.php"><p class="drop">Search a user</p></a>
+                    </section>
+                </section>
+                <a href="index.php"><section class="hct hcd hcd3">Home<br><br></section></a>
+                <section class="hct hcd hcd2">Publish&nbsp<i class="fa-solid fa-angle-down fa-2xs fag"></i>
+                    <br><br>
+                    <section class="dropdown">
+                        <a href="writepad.php"><p class="drop">Write Content</p></a>
+                        <a href="dashboard.php"><p class="drop">Create Blog</p></a>
+                        <a href="postimages.php"><p class="drop">Post Pictures</p></a>
+                    </section>
+                </section>
+                <a href="ocr.php"><section class="hct hcd" id="price">OCR
+                </section></a>
+            </section>
+            <section class="hdcon5">
+                <a href="search.php"><p class="hct hcts"><i class="fa-solid fa-magnifying-glass"></i></p></a>
+            </section>
+            <section class="hdcon3">
+                <a href="#"><button class="hct hctb2" id="edb"><i class="fa-solid fa-wand-magic-sparkles"></i>&nbspCreate</button></a>
+                <a href="#"><button class="hct hctb1 acc"><i class="fa-regular fa-user"></i>&nbspAccount</button></a>
+            </section>
+            <section class="hdcon4">
+                <p class="hct hctl hds"><i class="fa-solid fa-bars"></i></p>
+            </section>
+
+        </section>
+        <section class="con8">
+            <p class="gotop"><i class="fa-solid fa-circle-arrow-up fa-2xl" id="top"></i></p>
+        </section>
+    </header>
+    <script>
+        document.querySelector(".hds").addEventListener("click", ()=>{
+            document.querySelectorAll(".hdcon2, .hdcon3, hr").forEach((e)=>{e.classList.toggle("hdshow")});
+            document.querySelector("header").classList.toggle("hdpad");
+            document.querySelector(".fa-bars").classList.toggle("fa-xmark");
+        });
+        document.querySelectorAll('#about, #categories, #benefits, #contact, .drop').forEach((e)=>{e.addEventListener('click', ()=>{
+                document.querySelectorAll('.dropdown').forEach((e)=>{e.style.display='none !important';});
+                console.log(1);
+            });
+        });
+        // Define the media query
+        const mediaQuery = window.matchMedia("(max-width: 1200px)");
+
+        // Function to handle media query match
+        function handleMediaQuery(e) {
+            if (e.matches) {
+                // Code to run if the media query matches
+                document.querySelector(".hcd").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="300px";
+                });
+                document.querySelector(".hcd").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd2").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="140px";
+                });
+                document.querySelector(".hcd2").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd3").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd3").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+            } else {
+                // Code to run if the media query does not match
+                document.querySelector(".hcd").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd2").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd2").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd3").addEventListener("mouseover", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+                document.querySelector(".hcd3").addEventListener("mouseleave", ()=>{
+                document.querySelector(".hdcon3").style['margin-top']="20px";
+                });
+            }
+        }
+
+        // Initial check
+        handleMediaQuery(mediaQuery);
+
+        // Add listener for changes
+        mediaQuery.addEventListener("change", handleMediaQuery);
+
+        // Function to handle updates for .hcd elements
+        function updateHcdElements(color, fontWeight, textShadow, webkitTextStroke, addClass = null, removeClass = null) {
+            const hcdElements = document.querySelectorAll(".hcd");
+            hcdElements.forEach((element) => {
+                element.style.color = color;
+                element.style["font-weight"] = fontWeight;
+                element.style["text-shadow"] = textShadow;
+                element.style["-webkit-text-stroke"] = webkitTextStroke;
+
+                if (addClass) {
+                    element.classList.add(addClass);
+                }
+                if (removeClass) {
+                    element.classList.remove(removeClass);
+                }
+            });
+        }
+
+        // Function to handle updates for .gotop element
+        function updateGoTopElement(visibility, opacity) {
+            const top = document.querySelector(".gotop");
+            top.style.visibility = visibility;
+            top.style.opacity = opacity;
+            const tool = document.querySelector("#toolbar");
+            tool.style.visibility = visibility;
+            tool.style.opacity = opacity;
+        }
+
+        // Function to update the header
+        function updateHeader(scrolled) {
+            const header = document.querySelector(".headcon");
+            if (scrolled) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        }
+
+        // Function to update .hcts element
+        function updateHctsElement(color) {
+            const hcts = document.querySelector(".hcts");
+            hcts.style.color = color;
+        }
+
+        // Scroll event handler
+        window.onscroll = () => {
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 3800) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#priceimg, #post').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+                document.querySelectorAll('#free').forEach((e) => {
+                    e.style.transform = 'none';
+                });
+                document.querySelectorAll('#pri').forEach((e) => {
+                    e.style.transform = 'translateY(40px)';
+                });
+            } else if (scrollY > 3250) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#con').forEach((e) => {
+                    e.style.transform = 'translateY(40px)';
+                });
+            } else if (scrollY > 2200) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#blogimg').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+                document.querySelectorAll('#bbn').forEach((e) => {
+                    e.style.transform = 'translateY(50px)';
+                });
+            } else if (scrollY > 1600) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#catimg').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+                document.querySelectorAll('#cat').forEach((e) => {
+                    e.style.transform = 'translateY(10px)';
+                });
+            } else if (scrollY > 1000) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#healthimg, #create').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+                document.querySelectorAll('#hlt').forEach((e) => {
+                    e.style.transform = 'scaleX(1.2) translateX(55px)';
+                });
+            } else if (scrollY > 400) {
+                updateGoTopElement('visible', '1');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+                document.querySelectorAll('#aboutimg, #read').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+                document.querySelectorAll('#abt').forEach((e) => {
+                    e.style.transform = 'scaleX(1.2) translateX(55px)';
+                });
+            } else if (scrollY > 50 && scrollY <= 400) {
+                updateGoTopElement('hidden', '0');
+                updateHeader(true);
+                updateHcdElements("black", "normal", "0 0 0px black", ".5px black", null, "hcdb");
+                updateHctsElement("black");
+            } else {
+                updateGoTopElement('hidden', '0');
+                updateHeader(false);
+                updateHcdElements("white", "bold", "0 0 3px black", ".5px black", "hcdb", null);
+                updateHctsElement("white");
+                // document.querySelectorAll('img, .write').forEach((e) => {
+                //     e.style.transform = 'scale(0)';
+                //     e.style.opacity = '0';
+                // });
+                document.querySelectorAll('#abt, #hlt').forEach((e) => {
+                    e.style.transform = 'scaleX(1.2) translateX(150px)';
+                });
+                document.querySelectorAll('#cat, #bbn, #con, #pri').forEach((e) => {
+                    e.style.transform = 'translateY(0px)';
+                });
+                document.querySelectorAll('#free').forEach((e) => {
+                    e.style.transform = 'scaleX(1) translateX(150px)';
+                });
+            }
+        };
+
+        
+        function setupScroll(clickId, targetId, speed, distance) {
+            document.getElementById(clickId).addEventListener('click', () => {
+                const targetElement = document.getElementById(targetId);
+                const headerOffset = distance; // Space below the header
+                
+                // Get the target element's position relative to the viewport
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                
+                // Calculate the final scroll position with the header offset
+                const offsetPosition = window.pageYOffset + elementPosition - headerOffset;
+                
+                smoothScrollTo(window.pageYOffset, offsetPosition, speed);
+                // window.location.href="index.php";
+                document.querySelectorAll('img').forEach((e) => {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = '1';
+                });
+            });
+        }
+
+        function smoothScrollTo(start, end, duration) {
+            const distance = end - start;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+
+                const progress = Math.min(timeElapsed / duration, 1); // Normalize progress (0 to 1)
+                const easeInOutQuad = progress < 0.5 
+                    ? 2 * progress * progress 
+                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+                const scrollToPosition = start + distance * easeInOutQuad;
+
+                window.scrollTo(0, scrollToPosition);
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Example Usage:
+        // setupScroll('about', 'aboutblog', 10, 100); // Scroll from #about to #aboutblog in 1 second
+        // setupScroll('price', 'pricing', 10, 200); // Scroll from #about to #aboutblog in 1 second
+        // setupScroll('categories', 'categoriessec', 10, 150); // Scroll from #about to #aboutblog in 1 second
+        // setupScroll('contact', 'contactsec', 10, 100); // Scroll from #about to #aboutblog in 1 second
+        // setupScroll('benefits', 'blogbenefits', 10, 25); // Scroll from #about to #aboutblog in 1 second
+        setupScroll('top', 'gotop', 2000, 100); // Scroll from #about to #aboutblog in 1 second
+        setupScroll('edb', 'toolbar', 10, 200); // Scroll from #about to #aboutblog in 1 second
+
+    </script>
+</html>

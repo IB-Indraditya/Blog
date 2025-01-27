@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            footer{
+                padding-top: 70px;
+            }
+            .footex{
+                display: flex;
+                justify-content: center;
+                background: url("https://www.freeppt.net/background/blog_cliparts_powerpoint_backgrounds.jpg");
+                background-attachment: fixed;
+                background-position: top;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .ftrans{
+                background: transparent;
+            }
+            
+            .fthead{
+                margin: 50px auto;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .fpd{
+                display: flex;
+                margin: 0 auto;
+            }
+            .fhx{
+                font-size: 25px;
+            }
+            .ftx{
+                font-size: 15px;
+                margin: 10px 0;
+                color: dimgray;
+                cursor: url('gpointer.png'), pointer !important;
+            }
+            .txg{
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                cursor: url('gpointer.png'), pointer;
+            }
+            .wbf{
+                font-size: 25px;
+            }
+            .wbf span{
+                color: seagreen;
+                font-size: 20px;
+            }
+            .txg i{
+                margin: 0 5px;
+            }
+            
+            .hr, .hrx{
+                margin: 0 70vw;
+                margin-left: 10px;
+                display: block;
+            }
+            .hrf{
+                visibility: collapse;
+            }
+            .hrx{
+                width: 90%;
+                margin: 0px auto;
+            }
+            .fhv{
+                margin-bottom: 50px;
+                transform: translate(20px);
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+            }
+            .fhv span{
+                width: 5px;
+                padding: 0px 15px;
+                transform: scale(.5);
+                margin: 0 2px;
+                border: solid 1px black;
+                border-radius: 5px;
+            }
+            #clock{
+                font-size: 20px;
+                color: rgb(9 194 105 / var(--tw-bg-opacity, 1));
+                margin: 10px auto;
+            }
+            @media (max-width: 1005px) {
+                .hrf{
+                    margin: 0 30vw;
+                }
+                .fhv{
+                    transform: translate(0px);
+                }
+            }
+            @media (max-width: 700px) {
+                .footex{
+                    display: block !important;
+                    padding: 10px 50px;
+                }
+                .hr, .hrx, .hrf{
+                    margin: 0 auto;
+                    margin-left: 10px;
+                    display: block;
+                }
+            }
+            @media (min-width: 1900px) {
+                
+                .hr{
+                    margin: 0 1200px;
+                    margin-left: 10px;
+                    display: block;
+                }
+            }
+        </style>
+    </head>
+    <footer>
+        <section class="footex ftrans">
+            <section class="fthead fpd">
+                <p class="fhx txg">Blog <hr class="hr"> <span class="fhx txg"><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-linkedin"></i>
+                </span></p>
+            </section>
+        </section>
+        <br>
+        <br>
+        <hr class="hrx">
+        <section class="footex">
+            <section class="fthead">
+                <p class="fhx">Services</p>
+                <br>
+                <a href="dashboard.php"><p class="ftx">Publish Blog</p></a>
+                <a href="writepad.php"><p class="ftx">Write Content</p></a>
+                <a href=""><p class="ftx">Post Images</p></a>
+                <a href=""><p class="ftx">Play Games</p></a>
+                <a href=""><p class="ftx">Web Development</p></a>
+            </section>
+            <section class="fthead">
+                <p class="fhx">Documentation</p>
+                <br>
+                <a href=""><p class="ftx">Director's Board</p></a>
+                <a href=""><p class="ftx">Portfolio</p></a>
+                <a href=""><p class="ftx">Android</p></a>
+            </section>
+            <section class="fthead">
+                <p class="fhx">Tools</p>
+                <br>
+                <a href=""><p class="ftx">Calculator</p></a>
+                <a href="ocr.php"><p class="ftx">Image To Text</p></a>
+                <a href=""><p class="ftx">Image Editor</p></a>
+            </section>
+            <section class="fthead">
+                <p class="fhx">Support</p>
+                <br>
+                <a href=""><p class="ftx">Help Desk</p></a>
+                <a href="index.php#contactsec"><p class="ftx">Contact</p></a>
+            </section>
+        </section>
+        <section class="footex">
+            <section class="fthead fpd">
+                <p class="fhx fhv">Visitor- <span></span><span></span><span></span><span></span><hr class="hr hrf"> <span class=""></span></p>
+            </section>
+        </section>
+        <section class="footex">
+            <section class="fthead fpd">
+                <div id="clock">Time: </div>
+            </section>
+        </section>
+        <script>
+            function updateClock() {
+                const clockElement = document.getElementById('clock');
+                const now = new Date();
+    
+                // Format the time
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+                // Format hours to 12-hour clock
+                const formattedHours = hours % 12 || 12;
+    
+                // Pad minutes and seconds with leading zeros
+                const formattedMinutes = minutes.toString().padStart(2, '0');
+                const formattedSeconds = seconds.toString().padStart(2, '0');
+    
+                // Combine into a time string
+                const timeString = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+    
+                // Update the clock element
+                clockElement.textContent = timeString;
+            }
+    
+            // Update the clock every second
+            setInterval(updateClock, 1000);
+    
+            // Initial call to display clock immediately
+            updateClock();
+        </script>
+    </footer>
+</html>

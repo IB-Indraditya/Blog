@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Data</title>
+</head>
+<body>
+    <h1>Test API Fetch</h1>
+    <div id="response">Click the button to fetch data.</div>
+    <script>
+        function fetchApiData() {
+            fetch('https://klarkkent.vercel.app/api/greet')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('response').innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+                    document.getElementById('response').innerText = 'Error fetching data: ' + error.message;
+                });
+        }
+
+        // Auto-fetch on load
+        fetchApiData();
+
+    </script>
+</body>
+</html>
